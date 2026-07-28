@@ -1,5 +1,5 @@
 import pandas as pd
-
+# updated via GitHub
 def compare_data(api_df: pd.DataFrame, db_df: pd.DataFrame, key_col: str, compare_cols: list) -> dict:
     merged = pd.merge(api_df, db_df, how="outer", on=key_col, indicator=True, suffixes=("_api", "_db"))
     only_in_api = merged[merged["_merge"] == "left_only"][key_col].to_list()
