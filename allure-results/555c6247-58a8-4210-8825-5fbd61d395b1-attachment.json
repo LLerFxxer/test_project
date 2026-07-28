@@ -1,0 +1,6 @@
+{
+  "only_in_api": 1,
+  "only_in_db": 1,
+  "value_mismatch": 1,
+  "severity": "CRITICAL"
+}
