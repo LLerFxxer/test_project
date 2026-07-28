@@ -6,7 +6,7 @@ def compare_data(api_df: pd.DataFrame, db_df: pd.DataFrame, key_col: str, compar
     only_in_db = merged[merged["_merge"] == "right_only"][key_col].to_list()
     both = merged[merged["_merge"] == "both"]
     value_mismatch = [
-        {key_col: row[key_col], "column": col}
+        {key_col: row[key_col], "column": "列名", "api_value": row[f"{col}_api"], "db_value": row[f"{col}_db"]}
         for _,row in both.iterrows()
         for col in compare_cols
         if row[f"{col}_api"] != row[f"{col}_db"]
