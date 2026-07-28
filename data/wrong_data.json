@@ -1,8 +1,0 @@
-[
-    {"entry_key": "welcome",    "zh_translation": "欢迎来到游戏",          "en_translation": "Welcome"},
-    {"entry_key": "exit",       "zh_translation": "退出",               "en_translation": "Exit"},
-    {"entry_key": "greeting",   "zh_translation": "你好",               "en_translation": "Hello"},
-    {"entry_key": "start_link", "zh_translation": "开始链接",            "en_translation": "link start"},
-    {"entry_key": "start_btn",  "zh_translation": "开始游戏",            "en_translation": "Start Game"},
-    {"entry_key": "long_text",  "zh_translation": "这真的是一段很长的文本", "en_translation": "This is a long text"}
-]
