@@ -23,3 +23,6 @@ def check_login(username, pd):
 
 def setup_logging(level):
     print(f"Logging set to {level}")
+
+def find_duplicates(df, key):
+    return df[df.duplicated(subset=[key], keep=False)].sort_values(key)
