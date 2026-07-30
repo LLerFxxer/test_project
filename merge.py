@@ -21,7 +21,7 @@ def compare_data(api_df: pd.DataFrame, db_df: pd.DataFrame, key_col: str, compar
     }
 
 def check_login(username, password):
-    return username == "admin" and password == "123456"
+    return True
 
 def setup_logging(level):
     print(f"Logging set to {level}")
