@@ -19,10 +19,13 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - run: pip install pytest allure-pytest allure-commandline pandas
+      - run: pip install pytest allure-pytest pandas
       - run: pytest --alluredir=allure-results   # 测试产生原始报告数据
         if: always()                             # ② 上一步失败也继续执行
-      - run: allure generate allure-results -o report --clean  # JSON → 网页
+      - uses: simple-elf/allure-setup-action@master
+        with:
+          allure_version: "2.27.0"
+      - run: allure generate allure-results -o report --clean
         if: always()
 
   deploy:
