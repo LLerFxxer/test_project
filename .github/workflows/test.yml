@@ -1,0 +1,40 @@
+name: CI
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+
+permissions:                              # ① 工作流权限声明：让 GitHub 知道你用哪些权限
+  contents: read
+  pages: write                            #   部署 Pages 必须有
+  id-token: write                         #   部署 Pages 必须有（凭证）
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install pytest allure-pytest allure-commandline pandas
+      - run: pytest --alluredir=allure-results   # 测试产生原始报告数据
+        if: always()                             # ② 上一步失败也继续执行
+      - run: allure generate allure-results -o report --clean  # JSON → 网页
+        if: always()
+
+  deploy:
+    needs: test                           # ③ job 依赖：等 test 跑完才轮到我
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/configure-pages@v5  # ④ 部署三件套，顺序固定
+      - uses: actions/upload-pages-artifact@v3  # 把报告目录打包上传
+        with:
+          path: report            #    path 指向上一步生成的目录
+      - uses: actions/deploy-pages@v4     #    正式部署
+        id: deployment
