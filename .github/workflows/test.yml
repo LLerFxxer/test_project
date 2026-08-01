@@ -20,6 +20,7 @@ jobs:
         with:
           python-version: "3.12"
       - run: pip install pytest allure-pytest pandas
+      - run: echo "start testing"
       - run: pytest --alluredir=allure-results   # 测试产生原始报告数据
         if: always()                             # ② 上一步失败也继续执行
       - run: |
