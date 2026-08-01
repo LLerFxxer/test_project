@@ -22,9 +22,10 @@ jobs:
       - run: pip install pytest allure-pytest pandas
       - run: pytest --alluredir=allure-results   # 测试产生原始报告数据
         if: always()                             # ② 上一步失败也继续执行
-      - uses: simple-elf/allure-setup-action@master
-        with:
-          allure_version: "2.27.0"
+      - run: |
+          curl -L -o allure.zip https://github.com/allure-framework/allure2/releases/download/2.27.0/allure-2.27.0.zip
+          unzip allure.zip -d .
+          echo "$GITHUB_WORKSPACE/allure-2.27.0/bin" >> $GITHUB_PATH
       - run: allure generate allure-results -o report --clean
         if: always()
 
