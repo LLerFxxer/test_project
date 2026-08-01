@@ -28,6 +28,10 @@ jobs:
           echo "$GITHUB_WORKSPACE/allure-2.27.0/bin" >> $GITHUB_PATH
       - run: allure generate allure-results -o report --clean
         if: always()
+      - uses: actions/upload-pages-artifact@v3  # 在生成报告的同 job 内上传
+        if: always()
+        with:
+          path: report
 
   deploy:
     needs: test                           # ③ job 依赖：等 test 跑完才轮到我
@@ -37,8 +41,5 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/configure-pages@v5  # ④ 部署三件套，顺序固定
-      - uses: actions/upload-pages-artifact@v3  # 把报告目录打包上传
-        with:
-          path: report            #    path 指向上一步生成的目录
       - uses: actions/deploy-pages@v4     #    正式部署
         id: deployment
