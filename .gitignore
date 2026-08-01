@@ -3,3 +3,5 @@ __pycache__/
 allure-results/
 data/
 logs/
+.pytest_cache/
+*.db
