@@ -1,6 +1,7 @@
-import pandas as pd
 import io
+
 import allure
+import pandas as pd
 
 sales_csv = io.StringIO("""sale_id,product,qty,amount
 1,A,10,150.00

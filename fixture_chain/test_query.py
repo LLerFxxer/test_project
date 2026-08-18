@@ -1,8 +1,9 @@
-from query import query_top_employee
+from query import query_translations
 
-def test_query(db_conn):
-    res = query_top_employee(db_conn)
+
+def test_query_translations(mysql_conn):
+    res = query_translations(mysql_conn)
     assert len(res) == 3
-    assert {"dept": "研发", "name": "张三", "salary": 20000} in res
-    assert {"dept": "市场", "name": "赵六", "salary": 16000} in res
-    assert {"dept": "财务", "name": "孙七", "salary": 12000} in res
+    assert {"id": 1, "text": "你好", "lang": "zh", "chars": 2} in res
+    assert {"id": 2, "text": "hello", "lang": "en", "chars": 5} in res
+    assert {"id": 3, "text": "bonjour", "lang": "fr", "chars": 7} in res

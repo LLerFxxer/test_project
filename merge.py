@@ -1,5 +1,8 @@
-import pandas as pd
 import os
+
+import pandas as pd
+
+
 # updated via GitHub
 def compare_data(api_df: pd.DataFrame, db_df: pd.DataFrame, key_col: str, compare_cols: list) -> dict:
     api_keys = set(api_df[key_col])
