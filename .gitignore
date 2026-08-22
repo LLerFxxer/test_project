@@ -4,4 +4,8 @@ allure-results/
 data/
 logs/
 .pytest_cache/
+.ruff_cache/
 *.db
+htmlcov/
+.coverage
+coverage.xml
