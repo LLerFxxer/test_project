@@ -1,0 +1,20 @@
+- name: get_user_ok
+  method: GET
+  url: http://127.0.0.1:8000/api/users/1
+  expected:
+    code: 200
+
+- name: get_user_404
+  method: GET
+  url: http://127.0.0.1:8000/api/users/999
+  expected:
+    code: 404
+
+- name: get_user_detail
+  method: GET
+  url: http://127.0.0.1:8000/api/users/1
+  expected:
+    code: 200
+    user:
+      id: 1
+      name: alice

@@ -1,7 +1,7 @@
 __pycache__/ 
 *.pyc
 allure-results/
-data/
+/data/
 logs/
 .pytest_cache/
 .ruff_cache/
@@ -9,3 +9,4 @@ logs/
 htmlcov/
 .coverage
 coverage.xml
+/report/
